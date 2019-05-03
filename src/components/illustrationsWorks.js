@@ -23,14 +23,27 @@ class illustrationsWorks extends React.Component {
     let edges = item;
     let { page, chunksPerPage } = this.state;
     let paginated = Array.from(edges).splice(0, page * chunksPerPage);
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let currentDay;
+    let currentMonthName;
+    let currentYear;
+    let d;
 
     return paginated.map(work => (
+      // eslint-disable-next-line
+      (d = new Date(work.date.toString())),
+      (currentDay = d.getDate()),
+      (currentMonthName = monthNames[d.getMonth()]),
+      (currentYear = d.getFullYear()),
       <SingleWork
         key={work.id}
         singleId={work.id}
         work={work}
         workses={edges}
         openModal={this.openModal}
+        currentDay={currentDay}
+        currentMonthName={currentMonthName}
+        currentYear={currentYear}
       />
     ));
   };
@@ -123,7 +136,8 @@ class illustrationsWorks extends React.Component {
     );
   }
 }
-const SingleWork = ({ singleId, work, openModal, workses }) => (
+const SingleWork = ({ singleId, work, openModal, workses, currentDay, currentMonthName, currentYear }) => (
+
   <button
     className="work-link"
     onClick={work => openModal(workses.find(item => item.id === singleId))}
@@ -138,7 +152,7 @@ const SingleWork = ({ singleId, work, openModal, workses }) => (
     />
     <div className="work-caption">
       <p className="work-title">{work.name}</p>
-      <p className="work-year">{work.date.substring(0, 10)}</p>
+      <p className="work-year">{currentDay + " " + currentMonthName + " " + currentYear}</p>
     </div>
   </button>
 );

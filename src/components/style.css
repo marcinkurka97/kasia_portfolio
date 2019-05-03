@@ -425,7 +425,7 @@ header.active {
 
 @media only screen and (max-width: 1200px) {
   .Modal {
-    width: 800px;
+    width: 90%;
   }
   .modal-image {
     width: 100%;
@@ -435,7 +435,7 @@ header.active {
 @media only screen and (max-width: 768px) {
   .Modal {
     margin: 90px 0 0 0;
-    width: 300px;
+    width: 90%;
   }
 
   .modal-name {
@@ -485,7 +485,6 @@ header.active {
   font-weight: 100;
   margin: 0 50px;
   cursor: pointer;
-  min-height: 950px;
 }
 
 .threeD-title {
@@ -741,8 +740,13 @@ header.active {
 }
 
 @media only screen and (max-width: 1200px) {
+  .schoolWork-container {
+    flex-flow: column wrap;
+  }
+
   .schoolWork-table {
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
   }
 }
 

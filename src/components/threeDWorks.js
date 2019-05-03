@@ -17,6 +17,20 @@ class threeDWorks extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const itemsNumber = document.getElementById("threeD-container").childNodes.length;
+    const height = (Math.ceil(itemsNumber / 4) * 300) + 50;
+    const mobileHeight = itemsNumber * 300;
+    const width = window.innerWidth
+
+    if(width >= 768) {
+      document.getElementById("threeD-container").style.height = `${height}px`
+    } else {
+      document.getElementById("threeD-container").style.height = `${mobileHeight}px`
+    }
+  }
+
+
   renderPosts = item => {
     let edges = item;
     let paginated = Array.from(edges).splice(0, item.length);
@@ -160,4 +174,4 @@ const SingleWork = ({ singleId, work, openModal, workses, workCounter, margin, m
   </Media>
 );
 
-export default threeDWorks;
+export default threeDWorks

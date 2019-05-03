@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 const style = {
   color:" rgb(153, 153, 153)",
