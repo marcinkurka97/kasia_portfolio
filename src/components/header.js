@@ -21,11 +21,11 @@ class Header extends React.Component {
     };
   }
 
-  openHamburger = event => {
-    var node = ReactDOM.findDOMNode(event.target);
+  openHamburger = () => {
+    var button = this.refs.hamburgerButton
     var sideMenu = this.refs.sideMenu;
 
-    node.classList.toggle('active-one');
+    button.classList.toggle('active-one');
     sideMenu.classList.toggle('active');
 
     this.setState({
@@ -37,7 +37,7 @@ class Header extends React.Component {
     return (
       <div>
         <header id="header" ref="sideMenu">
-          <div className="icon-one" onClick={this.openHamburger.bind(this)}>
+          <div ref="hamburgerButton" className="icon-one" onClick={this.openHamburger}>
             <div className="hamburger hamburger-one" />
           </div>
           <div className="header-title">
