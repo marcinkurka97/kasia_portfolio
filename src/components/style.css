@@ -719,8 +719,7 @@ header.active {
 }
 
 .schoolWork-header {
-  display: flex;
-  flex-flow: column wrap;
+  display: inline-block;
   padding: 50px 0;
 }
 

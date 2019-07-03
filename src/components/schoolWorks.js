@@ -77,9 +77,9 @@ class illustrationsWorks extends React.Component {
             <div>
               <div className="schoolWork-container">
               
-                <div className="schoolWork-header">
+              <div className="schoolWork-header">
                   <h1 className="schoolWork-title">Posters</h1>
-                  <p className="schoolWork-desc">Some Posters</p>
+                  <p className="schoolWork-desc">Some posters works made to school</p>
                 </div>
                 <div className="schoolWork-table">
                   {this.renderPosts(workses, "Posters")}
