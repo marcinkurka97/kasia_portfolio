@@ -13,7 +13,7 @@ class threeDWorks extends React.Component {
       singleItemName: null,
       singleItemDate: null,
       singleItemImage: null,
-      //singleItemThumbnail: null,
+      singleItemThumbnail: null,
     };
   }
 
@@ -29,7 +29,6 @@ class threeDWorks extends React.Component {
       document.getElementById("threeD-container").style.height = `${mobileHeight}px`
     }
   }
-
 
   renderPosts = item => {
     let edges = item;
@@ -71,6 +70,7 @@ class threeDWorks extends React.Component {
       singleItemName: item.name,
       singleItemDate: item.date,
       singleItemImage: item.image.handle,
+      singleItemThumbnail: item.thumbnail.handle,
     });
   };
 
