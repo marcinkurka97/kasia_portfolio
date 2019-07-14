@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Layout from '../utils/layout';
-import SchoolWorks from '../components/School/schoolWorks';
+import IllustrationsWorks from '../components/Ilustrations/illustrationsWorks';
 import SmoothScroll from '../utils/smoothScroll';
 
-export default class School extends Component {
+export default class Ilustrations extends Component {
   render() {
     return (
       <Layout>
-        <SchoolWorks />
+        <IllustrationsWorks />
         <SmoothScroll />
       </Layout>
     );

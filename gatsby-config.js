@@ -14,6 +14,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        displayName: true,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -28,16 +34,16 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
-        typeName: "portfolio",
-        fieldName: "portfolio",
+        typeName: 'portfolio',
+        fieldName: 'portfolio',
         url:
-          "https://api-euwest.graphcms.com/v1/cjuwx45lk02k201f3zifxawj9/master",
+          'https://api-euwest.graphcms.com/v1/cjuwx45lk02k201f3zifxawj9/master',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

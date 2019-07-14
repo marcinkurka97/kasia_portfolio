@@ -8,14 +8,14 @@ const HeaderContainer = styled.div`
   ${props =>
     props.isOpen
       ? css`
-          background-color: rgb(232, 232, 232);
+          background-color: #1d1d1d;
           height: 330px;
           width: 100vw;
           padding: 60px 0 10px 0;
           transition: all 1s ease;
 
           ${media.tablet`
-            height: 330px;
+            height: 400px;
             width: 100vw;
             padding: 10px 0;
             position: fixed;
@@ -23,7 +23,7 @@ const HeaderContainer = styled.div`
           `}
         `
       : css`
-          background-color: rgb(232, 232, 232);
+          background-color: #1d1d1d;
           height: 250px;
           padding: 60px 0 10px 0;
           transition: all 1s ease;
@@ -38,13 +38,14 @@ const HeaderContainer = styled.div`
         `}
 `;
 
-const HeaderTitle = styled.div`
+const HeaderTitle = styled(Link)`
   display: flex;
   justify-content: center;
   font-size: 30px;
-  color: rgb(153, 153, 153);
+  color: #fff;
   font-weight: 100;
   font-family: 'Roboto', sans-serif;
+  text-decoration: none;
 
   ${media.tablet`
     align-items: center;
@@ -85,7 +86,7 @@ const HeaderLink = styled(Link)`
           text-align: right;
           padding: 0 25px 20px 0;
           font-size: 35px;
-          color: rgb(153, 153, 153);
+          color: rgb(100, 100, 100);
           text-transform: uppercase;
           text-decoration: none;
           animation: ${FadeIn} 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -97,7 +98,7 @@ const HeaderLink = styled(Link)`
       : css`
           font-size: 35px;
           padding: 40px 60px 25px 0;
-          color: rgb(153, 153, 153);
+          color: rgb(100, 100, 100);
           text-transform: uppercase;
           text-decoration: none;
 
@@ -107,7 +108,7 @@ const HeaderLink = styled(Link)`
         `}
 
   &:hover {
-    color: rgb(51, 51, 51) !important;
+    color: #fff !important;
     transition-duration: 0.3s;
   }
 `;
@@ -136,12 +137,12 @@ const HeaderSVGs = styled.div`
         `}
 `;
 
-const HeaderSingleSVG = styled.svg`
-  fill: rgb(153, 153, 153);
+export const HeaderSingleSVG = styled.svg`
+  fill: rgb(100, 100, 100);
   margin: 0 20px 0 0;
 
   &:hover {
-    fill: rgb(51, 51, 51);
+    fill: #fff;
     transition-duration: 0.3s;
   }
 `;
@@ -156,19 +157,19 @@ const FadeIn = keyframes`
 `;
 
 const activeStyle = {
-  color: 'rgb(51, 51, 51)',
+  color: '#FFF',
   fontSize: '35px',
 };
 
 /* HAMBURGER MENU */
-const HamburgerMenu = styled.div`
+export const HamburgerMenu = styled.div`
   margin: 15px 15px 0 0;
   position: fixed;
   display: none;
   top: 0%;
   right: 0%;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   z-index: 2;
 
@@ -176,12 +177,13 @@ const HamburgerMenu = styled.div`
     display: block;
     top: 40%;
     left: 20%;
-    width: 40px;
-    height: 6px;
+    width: 30px;
+    height: 4px;
     background: rgb(153, 153, 153);
     position: absolute;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
+    transform: scaleX(-1);
 
     &::before {
       top: -12px;
@@ -197,10 +199,14 @@ const HamburgerMenu = styled.div`
     content: '';
     position: absolute;
     width: 40px;
-    height: 6px;
+    height: 4px;
     background: rgb(153, 153, 153);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
+  }
+
+  .hamburger-one:after {
+    width: 20px;
   }
 
   ${props =>
@@ -220,6 +226,7 @@ const HamburgerMenu = styled.div`
           }
 
           .hamburger-one:after {
+            width: 40px;
             top: 0;
             transform: rotate(135deg);
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
@@ -257,10 +264,12 @@ class Header extends React.Component {
         >
           <div className="hamburger hamburger-one" />
         </HamburgerMenu>
-        <HeaderTitle>Hi! I'm Kasia and this is my portfolio.</HeaderTitle>
+        <HeaderTitle to="/">
+          Hi! I'm Kasia and this is my portfolio.
+        </HeaderTitle>
         <HeaderLinkContainer isOpen={this.state.menuisOpen}>
           <HeaderLink
-            to="/"
+            to="/ilustrations"
             isOpen={this.state.menuisOpen}
             activeStyle={activeStyle}
           >
@@ -279,6 +288,13 @@ class Header extends React.Component {
             activeStyle={activeStyle}
           >
             3d
+          </HeaderLink>
+          <HeaderLink
+            to="/contact"
+            isOpen={this.state.menuisOpen}
+            activeStyle={activeStyle}
+          >
+            Contact
           </HeaderLink>
         </HeaderLinkContainer>
         <HeaderSVGs isOpen={this.state.menuisOpen}>
@@ -319,10 +335,7 @@ class Header extends React.Component {
               height="24"
               viewBox="0 0 24 24"
             >
-              <path
-                d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.142-1.289H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"
-                fill="#626262"
-              />
+              <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.142-1.289H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z" />
             </HeaderSingleSVG>
           </a>
         </HeaderSVGs>
