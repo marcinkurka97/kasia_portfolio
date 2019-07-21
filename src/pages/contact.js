@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Layout from '../utils/layout';
-import ThreeDWorks from '../components/ThreeD/threeDWorks';
+import ContactComponent from '../components/Contact/contact';
 
-export default class ThreeD extends Component {
+export default class ContactPage extends Component {
   render() {
     return (
       <Layout>
-        <ThreeDWorks />
+        <ContactComponent />
       </Layout>
     );
   }
