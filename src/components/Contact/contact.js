@@ -1,20 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from '../..//utils/media';
 
 const ContactPageContainer = styled.div`
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: 0 auto;
-  margin-top: 50px;
   width: 800px;
-  height: 55vh;
+  min-height: 55vh;
   font-family: 'Open Sans', sans-serif;
-  background: #1d1d1d;
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  color: #000;
+  padding: 30px 20px;
+  border: 1px solid black;
 
   h1 {
     font-size: 40px;
-    font-weight: 700;
+    font-weight: 100;
     text-transform: uppercase;
     text-align: center;
   }
@@ -29,11 +32,11 @@ const ContactPageContainer = styled.div`
     input {
       color: #1d1d1d;
       border: none;
-      border-bottom: 1px solid black;
-      background: #fff;
+      border-bottom: 0.5px solid black;
+      background: transparent;
       font-size: 24px;
       width: 200px;
-      padding: 10px 20px;
+      padding: 10px 0;
       margin: 0 auto 20px auto;
       display: block;
       width: 80%;
@@ -44,37 +47,52 @@ const ContactPageContainer = styled.div`
       flex-direction: row;
       justify-content: space-evenly;
 
-      input:nth-child(1),
-      input:nth-child(2) {
+      input:nth-child(1) {
         display: inline-block;
-        width: 35%;
+        width: 80%;
         margin: 0 0 20px 0;
       }
     }
 
     textarea {
+      font-family: 'Open Sans', sans-serif;
       margin: 0 auto;
       width: 80%;
-      height: 100px;
+      height: 125px;
       color: #1d1d1d;
       border: none;
       border-bottom: 1px solid black;
-      background: #fff;
+      background: transparent;
       font-size: 16px;
-      padding: 10px 20px;
+      padding: 10px 0;
     }
 
     button {
       width: 50%;
       height: 50px;
-      background: #fff;
-      margin: 20px auto;
-      color: #1d1d1d;
+      background: #000;
+      margin: 30px auto 0 auto;
+      color: #fff;
       font-weight: 700;
       text-transform: uppercase;
       font-size: 20px;
+      border: none;
     }
   }
+
+  ${media.tablet`
+    width: 80vw;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    div{
+        input {
+          font-size: 16px;
+        }
+    }
+  `}
 `;
 
 class Contact extends React.Component {
@@ -84,11 +102,10 @@ class Contact extends React.Component {
         <h1>Contact</h1>
         <div>
           <div>
-            <input type="text" placeholder="Surname" />
-            <input type="text" placeholder="Forname" />
+            <input type="text" placeholder="Name" />
           </div>
           <input type="text" placeholder="Title" />
-          <textarea placeholder="Write here" />
+          <textarea placeholder="Message" />
           <button onClick="" value="Submit">
             Submit
           </button>

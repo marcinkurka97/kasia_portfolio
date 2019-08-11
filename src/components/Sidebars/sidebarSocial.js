@@ -1,14 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from '../..//utils/media';
 
 const StyledSidebar = styled.div`
   position: fixed;
-  left: -120px;
-  top: 70vh;
+  top: 65%;
+  left: -7.5%;
+  transform: translate(-50%, -50%);
   z-index: 1000;
   font-family: 'Open Sans', sans-serif;
   transform: rotate(-90deg);
+
+  ${media.tablet`
+    ${props =>
+      props.isOpen
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: none;
+          `}
+  `}
 
   div {
     display: flex;
@@ -22,6 +34,11 @@ const StyledSidebar = styled.div`
       padding: 5px 10px;
       font-size: 10px;
       text-transform: uppercase;
+
+      ${media.tablet`
+        background: #e8eaec;
+        color: #000;
+    `}
     }
 
     span:nth-child(2) {
@@ -44,6 +61,11 @@ const StyledSidebar = styled.div`
       a {
         text-decoration: none;
         color: #000;
+
+        ${media.tablet`
+          color: #e8eaec;
+          font-size: 10px;
+        `}
       }
 
       a:hover {
@@ -59,41 +81,37 @@ const StyledSidebar = styled.div`
   ${media.tablet`
       transform: rotate(0deg);
       left: 50%;
-      bottom: 0;
+      top: 31%;
+      color: #e8eaec;
       margin-right: -50%;
       transform: translate(-50%, 80%);
       font-size: 10px;
-    }
   `}
 `;
 
-class Sidebar extends React.Component {
-  render() {
-    return (
-      <StyledSidebar>
-        <div>
-          <span>Follow</span>
-          <span>-</span>
-          <ul>
-            <li>
-              <a href="https://www.behance.net/katmich">behance</a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/kat_illustrations/">
-                instagram
-              </a>
-            </li>
-            <li>
-              <a href="https://dribbble.com/cattleia">dribbble</a>
-            </li>
-            <li>
-              <a href="https://www.artstation.com/cattleeia">artstation</a>
-            </li>
-          </ul>
-        </div>
-      </StyledSidebar>
-    );
-  }
+function Sidebar({ menuisOpen }) {
+  return (
+    <StyledSidebar isOpen={menuisOpen}>
+      <div>
+        <span>Follow</span>
+        <span>-</span>
+        <ul>
+          <li>
+            <a href="https://www.behance.net/katmich">behance</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/kat_illustrations/">instagram</a>
+          </li>
+          <li>
+            <a href="https://dribbble.com/cattleia">dribbble</a>
+          </li>
+          <li>
+            <a href="https://www.artstation.com/cattleeia">artstation</a>
+          </li>
+        </ul>
+      </div>
+    </StyledSidebar>
+  );
 }
 
 export default Sidebar;

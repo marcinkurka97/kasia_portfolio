@@ -13,24 +13,25 @@ const slideIn = keyframes`
   `;
 
 export const StyledWorkTitle = styled.h1`
-  position: relative;
-  left: 10%;
-  margin: 70px 0 0 0;
-  padding: 50px 0 10px 0;
+  margin: 7% 0 20px 10%;
   text-align: left;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 100;
   font-size: 50px;
+
+  ${media.tablet`
+    margin: 25% 0 20px 15%;
+  `}
 `;
 
 export const StyledWorkSubtitle = styled.p`
   text-align: left;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   font-size: 16px;
   text-transform: uppercase;
   padding: 0 0 20px 0;
-  margin: 0 0 0 150px;
+  margin: 0 0 0 7%;
 `;
 
 export const StyledWorkContainer = styled.div`
@@ -61,7 +62,7 @@ export const StyledWorkSingle = styled.button`
   border: none;
   text-decoration: none;
   color: #444444;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 100;
   margin: 0;
   cursor: pointer;
@@ -104,10 +105,11 @@ export const StyledWorkSingleCaption = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 30px 0 60px 0;
+  padding: 10px 0 60px 0;
 
   p:first-of-type {
     font-size: 30px;
+    font-weight: 300;
   }
 
   p:last-of-type {
@@ -122,7 +124,7 @@ export const StyledWorkSchool = styled.button`
   border: none;
   text-decoration: none;
   color: #444444;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 100;
   margin: 0;
   cursor: pointer;
