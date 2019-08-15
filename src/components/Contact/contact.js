@@ -22,7 +22,7 @@ const ContactPageContainer = styled.div`
     text-align: center;
   }
 
-  div {
+  .contact-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -68,21 +68,60 @@ const ContactPageContainer = styled.div`
     }
 
     button {
-      width: 50%;
-      height: 50px;
-      background: #000;
-      margin: 30px auto 0 auto;
-      color: #fff;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 20px;
+      position: relative;
+      background: none;
       border: none;
+      padding: 10px 25px;
+      color: #000;
+      font-weight: 500;
+      font-size: 20px;
+      margin: 30px auto 0 auto;
+      width: 150px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 7px;
+      right: 6px;
+      background-color: #b6b6b6;
+      z-index: -1;
+      transition: transform 0.15s ease-out 0s;
+    }
+
+    button::after {
+      content: '';
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(0, 0, 0);
+      border-image: initial;
+      transition: transform 0.15s ease-out 0s;
+    }
+
+    button:hover {
+      cursor: pointer;
+
+      &:before {
+        transform: translate(7px, -6px);
+      }
+
+      &:after {
+        transform: translate(-7px, 6px);
+      }
     }
   }
 
   ${media.tablet`
     width: 80vw;
-    top: 57%;
+    top: 60%;
 
     h1 {
       font-size: 30px;
@@ -101,7 +140,7 @@ class Contact extends React.Component {
     return (
       <ContactPageContainer>
         <h1>Contact</h1>
-        <div>
+        <div className="contact-container">
           <div>
             <input type="text" placeholder="Name" />
           </div>
