@@ -14,19 +14,28 @@ export const StyledModal = styled(Modal)`
   border-radius: 0px;
   outline: none;
   padding: 0px;
-  width: 1200px;
+  width: 80vw;
   margin: 0px auto;
   display: flex;
   justify-content: center;
   align-items: center;
 
   ${media.desktop`
-    width: 90%;
+    margin: 0 auto;
+    top: 15%;
+    right: 0;
+    bottom: 15%;
+    left: 0;
+    width: 90vw;
   `}
 
   ${media.tablet`
-    margin: 90px 0 0 0;
-    width: 90%;
+    margin: 0 auto;
+    top: 15%;
+    right: 0;
+    bottom: 15%;
+    left: 0;
+    width: 90vw;
   `}
 `;
 
@@ -37,8 +46,8 @@ export const StyledModalContainer = styled.div`
   align-items: center;
   flex-flow: column wrap;
   text-align: center;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 `;
 

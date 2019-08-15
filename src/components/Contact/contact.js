@@ -82,6 +82,7 @@ const ContactPageContainer = styled.div`
 
   ${media.tablet`
     width: 80vw;
+    top: 57%;
 
     h1 {
       font-size: 30px;

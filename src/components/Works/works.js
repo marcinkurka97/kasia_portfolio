@@ -20,7 +20,11 @@ export const StyledWorkTitle = styled.h1`
   font-size: 50px;
 
   ${media.tablet`
-    margin: 25% 0 20px 15%;
+    &:first-of-type {
+      margin-top: 30%;
+    }
+
+    margin: 0 10% 0 10%;
   `}
 `;
 
@@ -31,13 +35,19 @@ export const StyledWorkSubtitle = styled.p`
   font-size: 16px;
   text-transform: uppercase;
   padding: 0 0 20px 0;
-  margin: 0 0 0 7%;
+  margin: 0 0 0 10%;
+
+  ${media.tablet`
+    margin: 0 5% 0 10%;
+    padding: 0;
+  `}
 `;
 
 export const StyledWorkContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  margin-bottom: 5%;
 
   ${media.tablet`
     padding: 20px 0 0 0;
@@ -73,7 +83,7 @@ export const StyledWorkSingle = styled.button`
   }
 
   ${media.tablet`
-    width: 300px;
+    width: 80vw;
   `}
 `;
 
@@ -130,6 +140,10 @@ export const StyledWorkSchool = styled.button`
   cursor: pointer;
   animation: ${slideIn} 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
+  ${media.tablet`
+    width: 80vw;
+  `}
+
   &:focus {
     outline: none;
   }
@@ -156,10 +170,13 @@ export const StyledWorkSchoolImage = styled.div`
 `;
 
 export const StyledWork3dContainer = styled.div`
-  width: 1220px;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin-bottom: 2.5%;
+
+  ${media.tablet`
+    margin-top: -50px;
+  `}
 
   button:nth-child(1) {
     left: 10%;

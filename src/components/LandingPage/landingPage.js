@@ -28,7 +28,7 @@ const LandingPage = styled.div`
     left: 0;
     background-size: cover;
   `}
-
+  }
 
   .background__image {
     position: absolute;
@@ -44,6 +44,7 @@ const LandingPage = styled.div`
   }
 `;
 
+// eslint-disable-next-line
 const LandingPageTitleContainer = styled.div`
   position: absolute;
   top: 50%;

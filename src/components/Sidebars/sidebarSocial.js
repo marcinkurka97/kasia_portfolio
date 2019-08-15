@@ -1,6 +1,15 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import media from '../..//utils/media';
+
+const FadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const StyledSidebar = styled.div`
   position: fixed;
@@ -10,6 +19,7 @@ const StyledSidebar = styled.div`
   z-index: 1000;
   font-family: 'Open Sans', sans-serif;
   transform: rotate(-90deg);
+  animation: ${FadeIn} 1.2s 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
   ${media.tablet`
     ${props =>
@@ -81,7 +91,7 @@ const StyledSidebar = styled.div`
   ${media.tablet`
       transform: rotate(0deg);
       left: 50%;
-      top: 31%;
+      top: 37.5vh;
       color: #e8eaec;
       margin-right: -50%;
       transform: translate(-50%, 80%);

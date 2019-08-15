@@ -35,8 +35,7 @@ body {
 .load {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 5%;
 }
 
 .load button {

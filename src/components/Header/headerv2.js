@@ -1,23 +1,31 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import media from '../..//utils/media';
+
+const FadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const StyledHeader = styled.div`
   ${media.tablet`
-      /* background: #ecbac3; */
-      background: #f79776;
+      background: #9c718d;
     `}
 
   ${props =>
     props.isOpen
       ? css`
-          height: 300px;
-          background: #e8eaec;
-          transition: all 1s;
+          max-height: 50vh;
+          transition: max-height 0.5s ease-out;
         `
       : css`
-          height: auto;
+          max-height: 20vh;
+          transition: max-height 0.5s ease-in;
         `}
 
   padding: 28px 0;
@@ -27,11 +35,15 @@ const StyledHeader = styled.div`
   left: 0;
   font-family: 'Open Sans', sans-serif;
   z-index: 1000;
-  transition: all 1s linear;
+}
 
   div {
     padding: 0 50px;
     max-width: inherit;
+
+    ${media.tablet`
+    padding: 0 9%;
+        `}
 
     ul {
       list-style: none;
@@ -47,12 +59,14 @@ const StyledHeader = styled.div`
       ${media.tablet`
           padding: 0 0 40px 0;
           border-bottom: solid 1px #e8eaec;
+          
         `}
 
       li {
         display: inline-block;
         margin: 0 0 0 30px;
         padding: 8px 0;
+        animation: ${FadeIn} 1.2s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
         ${media.tablet`
           margin: 0 0 0 10px;
@@ -111,6 +125,7 @@ const StyledTitle = styled(Link)`
     margin: 0 20px;
   }
 
+  animation: none;
   font-family: 'Tiffany Script', sans-serif;
   position: absolute;
   top: 40%;
@@ -130,15 +145,14 @@ const StyledTitle = styled(Link)`
     font-size: 16px;
     margin: 0;
     color: #e8eaec;
+    left: 38%;
 
     p {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 700;
       text-decoration: none;
       left: 50%;
       padding: 0 5px;
-      -webkit-text-fill-color: black;
-      -webkit-text-stroke: 2px #fff;
     }
 
     svg {
@@ -161,11 +175,10 @@ const activeStyle = {
 
 /* HAMBURGER MENU */
 export const HamburgerMenu = styled.div`
-  margin: 15px 15px 0 0;
   position: fixed;
   display: none;
-  top: 0%;
-  right: 0%;
+  top: 3%;
+  right: 10%;
   width: 40px;
   height: 50px;
   cursor: pointer;
@@ -173,7 +186,7 @@ export const HamburgerMenu = styled.div`
 
   .hamburger {
     display: block;
-    top: 5%;
+    top: 6%;
     right: 10%;
     width: 40px;
     height: 3px;
