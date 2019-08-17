@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-// import tlo1 from '../images/tlo1.png';
-import tlo2 from '../images/tlo2.png';
+import tlo1 from '../images/zygzak.png';
 
-export const StyledBackground = styled.div`
+const StyledBackground = styled.div`
   z-index: -1;
-  background: url(${tlo2});
-  background-size: cover;
+  background: url(${tlo1});
+  background-size: contain;
   background-repeat: no-repeat;
   width: 85%;
   height: 40%;
@@ -13,3 +12,5 @@ export const StyledBackground = styled.div`
   top: 35%;
   left: 15%;
 `;
+
+export default StyledBackground;

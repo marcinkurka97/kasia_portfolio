@@ -1,5 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
+import styled from 'styled-components';
+import media from '../..//utils/media';
 import { StaticQuery, graphql } from 'gatsby';
 import Modal from 'react-modal';
 import {
@@ -13,6 +15,17 @@ import {
   StyledModalContainer,
   StyledModalImage,
 } from '../Modal/modal';
+import StyledBackground from '../../utils/background';
+
+const BackgroundPhoto = styled(StyledBackground)`
+  background-size: cover;
+  position: absolute;
+  background-repeat: repeat;
+  top: 23%;
+  left: 33%;
+  height: 50%;
+  width: 60%;
+`;
 
 class threeDWorks extends React.Component {
   constructor(props) {
@@ -100,6 +113,7 @@ class threeDWorks extends React.Component {
   render() {
     return (
       <>
+        <BackgroundPhoto />
         <StaticQuery
           query={graphql`
             query {

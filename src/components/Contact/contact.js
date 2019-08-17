@@ -1,6 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from '../..//utils/media';
+import { Formik, Form, Field } from 'formik';
+import axios from 'axios';
+import * as Yup from 'yup';
+import StyledBackground from '../../utils/background';
+import tlo1 from '../../images/skosP.png';
+
+const BackgroundPhoto = styled(StyledBackground)`
+  background: url(${tlo1});
+  position: absolute;
+  background-repeat: repeat;
+  top: 21%;
+  left: 50%;
+  height: 500px;
+  width: 460px;
+  z-index: -10000;
+
+  ${media.tablet`
+    top: -2%;
+    left: -5%;
+    height: 50%;
+    width: 80%;
+  `}
+`;
+
+const SignupSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  subject: Yup.string()
+    .min(5, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  content: Yup.string()
+    .min(5, 'Too Short!')
+    .required('Required'),
+});
 
 const ContactPageContainer = styled.div`
   position: absolute;
@@ -14,6 +50,8 @@ const ContactPageContainer = styled.div`
   color: #000;
   padding: 30px 20px;
   border: 1px solid black;
+  background: #e8eaec;
+  z-index: 9999;
 
   h1 {
     font-size: 40px;
@@ -22,7 +60,7 @@ const ContactPageContainer = styled.div`
     text-align: center;
   }
 
-  .contact-container {
+  form {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -30,7 +68,7 @@ const ContactPageContainer = styled.div`
     margin: 10px 0 0 0;
 
     input {
-      color: #1d1d1d;
+      color: black;
       border: none;
       border-bottom: 0.5px solid black;
       background: transparent;
@@ -43,15 +81,10 @@ const ContactPageContainer = styled.div`
     }
 
     div {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-
-      input:nth-child(1) {
-        display: inline-block;
-        width: 80%;
-        margin: 0 0 20px 0;
-      }
+      margin: 0 auto;
+      width: 80%;
+      color: red;
+      font-family: 'Open Sans', sans-serif;
     }
 
     textarea {
@@ -138,19 +171,74 @@ const ContactPageContainer = styled.div`
 class Contact extends React.Component {
   render() {
     return (
-      <ContactPageContainer>
-        <h1>Contact</h1>
-        <div className="contact-container">
-          <div>
-            <input type="text" placeholder="Name" />
-          </div>
-          <input type="text" placeholder="Title" />
-          <textarea placeholder="Message" />
-          <button onClick="" value="Submit">
-            Submit
-          </button>
-        </div>
-      </ContactPageContainer>
+      <>
+        <BackgroundPhoto />
+        <ContactPageContainer>
+          <h1>Contact</h1>
+          <Formik
+            initialValues={{ email: '', subject: '', content: '' }}
+            validate={values => {
+              let errors = {};
+              if (!values.email) {
+                errors.email = 'Required';
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              ) {
+                errors.email = 'Invalid email address';
+              }
+              return errors;
+            }}
+            validationSchema={SignupSchema}
+            onSubmit={(values, { resetForm }) => {
+              SignupSchema.isValid({
+                email: values.email,
+                subject: values.subject,
+                content: values.content,
+              })
+                .then(function() {
+                  axios({
+                    method: 'post',
+                    url:
+                      'https://cors-anywhere.herokuapp.com/https://o30d2yrza3.execute-api.eu-west-1.amazonaws.com/default/portfolio_lambda',
+                    data: {
+                      email: values.email,
+                      subject: values.subject,
+                      content: values.content,
+                    },
+                  })
+                    .then(function() {
+                      resetForm();
+                      alert('Message sent');
+                    })
+                    .catch(function() {
+                      alert('Error');
+                    });
+                })
+                .catch(function() {
+                  alert('Fill in all the fields');
+                });
+            }}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <Field name="email" type="email" placeholder="Email" />
+                {errors.email && touched.email ? (
+                  <div>{errors.email}</div>
+                ) : null}
+                <Field name="subject" placeholder="Subject" />
+                {errors.subject && touched.subject ? (
+                  <div>{errors.subject}</div>
+                ) : null}
+                <Field name="content" placeholder="Message" />
+                {errors.content && touched.content ? (
+                  <div>{errors.content}</div>
+                ) : null}
+                <button type="submit">Submit</button>
+              </Form>
+            )}
+          </Formik>
+        </ContactPageContainer>
+      </>
     );
   }
 }

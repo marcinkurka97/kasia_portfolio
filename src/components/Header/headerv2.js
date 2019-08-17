@@ -20,7 +20,7 @@ const StyledHeader = styled.div`
   ${props =>
     props.isOpen
       ? css`
-          max-height: 50vh;
+          max-height: 53vh;
           transition: max-height 0.5s ease-out;
         `
       : css`
@@ -315,11 +315,16 @@ C420.5,249.9,420.4,252.7,419.1,254.5C419.1,254.4,419.1,254.4,419.1,254.5z"
                   School
                 </Link>
               </li>
-            </div>
-            <div>
               <li>
                 <Link to="/threeD" activeStyle={activeStyle}>
                   3d
+                </Link>
+              </li>
+            </div>
+            <div>
+              <li>
+                <Link to="/about" activeStyle={activeStyle}>
+                  About me
                 </Link>
               </li>
               <li>

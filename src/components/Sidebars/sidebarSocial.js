@@ -91,7 +91,7 @@ const StyledSidebar = styled.div`
   ${media.tablet`
       transform: rotate(0deg);
       left: 50%;
-      top: 37.5vh;
+      top: 42vh;
       color: #e8eaec;
       margin-right: -50%;
       transform: translate(-50%, 80%);

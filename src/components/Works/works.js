@@ -78,6 +78,22 @@ export const StyledWorkSingle = styled.button`
   cursor: pointer;
   animation: ${slideIn} 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
+  &:nth-of-type(odd):after {
+    content: '';
+    left: 8px;
+    top: 8px;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    opacity: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-image: initial;
+    transition: transform 0.15s ease-out 0s;
+    z-index: -1;
+  }
+
   &:focus {
     outline: none;
   }
@@ -139,6 +155,22 @@ export const StyledWorkSchool = styled.button`
   margin: 0;
   cursor: pointer;
   animation: ${slideIn} 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
+  &:nth-of-type(odd):after {
+    content: '';
+    left: 8px;
+    top: 8px;
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    opacity: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-image: initial;
+    transition: transform 0.15s ease-out 0s;
+    z-index: -1;
+  }
 
   ${media.tablet`
     width: 80vw;
