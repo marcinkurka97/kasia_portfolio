@@ -54,3 +54,8 @@ body {
 .load-disabled {
   display: none;
 }
+
+#macy-container {
+  width: 80vw;
+  margin: 0 auto 50px auto;
+}

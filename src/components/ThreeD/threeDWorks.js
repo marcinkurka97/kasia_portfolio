@@ -25,6 +25,13 @@ const BackgroundPhoto = styled(StyledBackground)`
   left: 33%;
   height: 50%;
   width: 60%;
+
+  ${media.tablet`
+    top: 30%;
+    left: 2.5%;
+    height: 60%;
+    width: 95%;
+  `}
 `;
 
 class threeDWorks extends React.Component {

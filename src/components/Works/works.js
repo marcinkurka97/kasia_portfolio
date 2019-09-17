@@ -322,3 +322,34 @@ export const StyledWork3dImage = styled.div`
     transition: all 0.3s ease-in-out;
   }
 `;
+
+export const MasyImage = styled.img`
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+    -webkit-filter: brightness(80%);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:nth-of-type(odd):after {
+    content: '';
+    left: 8px;
+    top: 8px;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    opacity: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-image: initial;
+    transition: transform 0.15s ease-out 0s;
+    z-index: -1;
+  }
+`;

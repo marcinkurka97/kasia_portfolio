@@ -15,12 +15,11 @@ const BackgroundPhoto = styled(StyledBackground)`
   left: 50%;
   height: 500px;
   width: 460px;
-  z-index: -10000;
 
   ${media.tablet`
-    top: -2%;
-    left: -5%;
-    height: 50%;
+    top: 27%;
+    left: 5%;
+    height: 60%;
     width: 80%;
   `}
 `;
@@ -51,7 +50,6 @@ const ContactPageContainer = styled.div`
   padding: 30px 20px;
   border: 1px solid black;
   background: #e8eaec;
-  z-index: 9999;
 
   h1 {
     font-size: 40px;

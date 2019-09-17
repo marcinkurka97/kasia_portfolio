@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Modal from 'react-modal';
+import Macy from 'macy';
 import {
   StyledWorkContainer,
   StyledWorkTitle,
@@ -8,6 +9,7 @@ import {
   StyledWorkSingle,
   StyledWorkSingleImage,
   StyledWorkSingleCaption,
+  MasyImage,
 } from '../Works/works';
 import {
   StyledModal,
@@ -34,7 +36,7 @@ class illustrationsWorks extends React.Component {
 
   renderPosts = item => {
     let { page, chunksPerPage } = this.state;
-    let paginated = Array.from(item).splice(0, page * chunksPerPage);
+    let paginated = Array.from(item);
     const monthNames = [
       'January',
       'February',
@@ -88,6 +90,23 @@ class illustrationsWorks extends React.Component {
     Modal.setAppElement('body');
   }
 
+  componentDidMount() {
+    const macyInstance = new Macy({
+      container: '#macy-container',
+      mobileFirst: true,
+      columns: 1,
+      breakAt: {
+        1200: 3,
+        720: 2,
+        400: 1,
+      },
+      margin: {
+        x: 30,
+        y: 30,
+      },
+    });
+  }
+
   openModal = item => {
     this.setState({
       modalIsOpen: true,
@@ -129,16 +148,14 @@ class illustrationsWorks extends React.Component {
           render={({ portfolio: { workses } }) => (
             <>
               <StyledWorkTitle>Illustrations</StyledWorkTitle>
-              <StyledWorkContainer>
-                <StyledWorkTable>{this.renderPosts(workses)}</StyledWorkTable>
-              </StyledWorkContainer>
-              {workses.length >= chunksPerPage * 2 + 1 && (
+              <div id="macy-container">{this.renderPosts(workses)}</div>
+              {/* {workses.length >= chunksPerPage * 2 + 1 && (
                 <div className={allLoaded ? 'load-disabled' : 'load'}>
                   <button onClick={work => this.onLoad(workses)}>
                     Show all
                   </button>
                 </div>
-              )}
+              )} */}
             </>
           )}
         />
@@ -172,21 +189,26 @@ const SingleWork = ({
   currentMonthName,
   currentYear,
 }) => (
-  <StyledWorkSingle
+  <MasyImage
+    src={`https://media.graphcms.com/${work.thumbnail.handle}`}
     onClick={work => openModal(workses.find(item => item.id === singleId))}
-  >
-    <StyledWorkSingleImage
-      style={{
-        backgroundImage: `url(${`https://media.graphcms.com/${
-          work.thumbnail.handle
-        }`})`,
-      }}
-    />
-    <StyledWorkSingleCaption>
-      <p>{work.name}</p>
-      <p>{currentDay + ' ' + currentMonthName + ' ' + currentYear}</p>
-    </StyledWorkSingleCaption>
-  </StyledWorkSingle>
+    alt={work.name}
+  />
+  // <StyledWorkSingle
+  //   onClick={work => openModal(workses.find(item => item.id === singleId))}
+  // >
+  //   <StyledWorkSingleImage
+  //     style={{
+  //       backgroundImage: `url(${`https://media.graphcms.com/${
+  //         work.thumbnail.handle
+  //       }`})`,
+  //     }}
+  //   />
+  //   <StyledWorkSingleCaption>
+  //     <p>{work.name}</p>
+  //     <p>{currentDay + ' ' + currentMonthName + ' ' + currentYear}</p>
+  //   </StyledWorkSingleCaption>
+  // </StyledWorkSingle>
 );
 
 export default illustrationsWorks;

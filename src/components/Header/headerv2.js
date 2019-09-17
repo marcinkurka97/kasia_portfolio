@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import media from '../..//utils/media';
 
@@ -14,7 +14,7 @@ const FadeIn = keyframes`
 
 const StyledHeader = styled.div`
   ${media.tablet`
-      background: #9c718d;
+      background-color: #b6b6b6;
     `}
 
   ${props =>
@@ -35,6 +35,7 @@ const StyledHeader = styled.div`
   left: 0;
   font-family: 'Open Sans', sans-serif;
   z-index: 1000;
+  transition: background 0.25s ease-in;
 }
 
   div {
@@ -247,7 +248,7 @@ function Header({ menuisOpen, openHamburger }) {
       <HamburgerMenu isOpen={menuisOpen} onClick={openHamburger}>
         <div className="hamburger hamburger-one" />
       </HamburgerMenu>
-      <StyledHeader isOpen={menuisOpen}>
+      <StyledHeader isOpen={menuisOpen} id="header-container">
         <StyledTitle to="/" isOpen={menuisOpen}>
           <p>kasia</p>
           <svg

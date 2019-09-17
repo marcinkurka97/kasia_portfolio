@@ -114,6 +114,14 @@ class SidebarScroll extends React.Component {
       document.querySelector('.btn-bot').style.display = 'flex';
       document.querySelector('.btn-top').style.display = 'none';
     }
+
+    if (document.body.clientWidth >= 768 && c >= 0.2 * window.innerHeight) {
+      document.querySelector('#header-container').style.background =
+        'rgba(255,255,255,0.8)';
+    }
+    if (document.body.clientWidth >= 768 && c <= 0.2 * window.innerHeight) {
+      document.querySelector('#header-container').style.background = 'inherit';
+    }
   };
 
   render() {
