@@ -1,16 +1,8 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Modal from 'react-modal';
-import Macy from 'macy';
-import {
-  StyledWorkContainer,
-  StyledWorkTitle,
-  StyledWorkTable,
-  StyledWorkSingle,
-  StyledWorkSingleImage,
-  StyledWorkSingleCaption,
-  MasyImage,
-} from '../Works/works';
+import Macy from 'macy-fix-try';
+import { StyledWorkTitle, MasyImage } from '../Works/works';
 import {
   StyledModal,
   StyledModalContainer,
@@ -35,8 +27,6 @@ class illustrationsWorks extends React.Component {
   }
 
   renderPosts = item => {
-    let { page, chunksPerPage } = this.state;
-    let paginated = Array.from(item);
     const monthNames = [
       'January',
       'February',
@@ -56,7 +46,7 @@ class illustrationsWorks extends React.Component {
     let currentYear;
     let d;
 
-    return paginated.map(
+    return item.map(
       work => (
         // eslint-disable-next-line
         (d = new Date(work.date.toString())),
@@ -91,7 +81,7 @@ class illustrationsWorks extends React.Component {
   }
 
   componentDidMount() {
-    const macyInstance = new Macy({
+    new Macy({
       container: '#macy-container',
       mobileFirst: true,
       columns: 1,
@@ -123,7 +113,6 @@ class illustrationsWorks extends React.Component {
   };
 
   render() {
-    let { allLoaded, chunksPerPage } = this.state;
     return (
       <>
         <StaticQuery

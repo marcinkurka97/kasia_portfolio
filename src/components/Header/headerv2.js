@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import media from '../..//utils/media';
 
@@ -29,8 +29,8 @@ const StyledHeader = styled.div`
         `}
 
   padding: 28px 0;
-  width: 100vw;
-  position: fixed;
+  width: 100%;
+  position: absolute;
   top: 0;
   left: 0;
   font-family: 'Open Sans', sans-serif;
@@ -323,11 +323,6 @@ C420.5,249.9,420.4,252.7,419.1,254.5C419.1,254.4,419.1,254.4,419.1,254.5z"
               </li>
             </div>
             <div>
-              <li>
-                <Link to="/about" activeStyle={activeStyle}>
-                  About me
-                </Link>
-              </li>
               <li>
                 <Link to="/contact" activeStyle={activeStyle}>
                   Contact

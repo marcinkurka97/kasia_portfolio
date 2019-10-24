@@ -11,9 +11,10 @@ const BackgroundPhoto = styled(StyledBackground)`
   background: url(${tlo1});
   position: absolute;
   background-repeat: repeat;
+  background-size: cover;
   top: 21%;
   left: 50%;
-  height: 500px;
+  height: 68%;
   width: 460px;
 
   ${media.tablet`

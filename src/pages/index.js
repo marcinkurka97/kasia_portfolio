@@ -6,7 +6,7 @@ export default class LandingPage extends Component {
   render() {
     return (
       <Layout>
-        <LandingPageComponent />
+        <LandingPageComponent ref={this.inputRef} />
       </Layout>
     );
   }
