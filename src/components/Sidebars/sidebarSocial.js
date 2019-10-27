@@ -44,11 +44,6 @@ const StyledSidebar = styled.div`
       padding: 5px 10px;
       font-size: 10px;
       text-transform: uppercase;
-
-      ${media.tablet`
-        background: #e8eaec;
-        color: #000;
-    `}
     }
 
     span:nth-child(2) {
@@ -71,11 +66,6 @@ const StyledSidebar = styled.div`
       a {
         text-decoration: none;
         color: #000;
-
-        ${media.tablet`
-          color: #e8eaec;
-          font-size: 10px;
-        `}
       }
 
       a:hover {
@@ -87,21 +77,11 @@ const StyledSidebar = styled.div`
       margin-left: 5px;
     }
   }
-
-  ${media.tablet`
-      transform: rotate(0deg);
-      left: 50%;
-      top: 42vh;
-      color: #e8eaec;
-      margin-right: -50%;
-      transform: translate(-50%, 80%);
-      font-size: 10px;
-  `}
 `;
 
-function Sidebar({ menuisOpen }) {
+function Sidebar() {
   return (
-    <StyledSidebar isOpen={menuisOpen}>
+    <StyledSidebar>
       <div>
         <span>Follow</span>
         <span>-</span>
